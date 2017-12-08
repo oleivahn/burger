@@ -1,0 +1,49 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Soon will be mine!</h4>
+            <ul class="list-group">
+                {{#each burgers}}
+                    {{#unless this.devoured}}
+                <li class="list-group-item list-group-item-primary" id="soon">
+                    {{this.burger_name}}
+                    <form action="/burgers/{{this.id}}?_method=PUT" method="POST" style="display: inline; float: right">
+                      <button type="submit" class="btn btn-primary" class='burgerAvailable'> Just ate it!</button>
+                    </form>
+
+                </li>
+                {{/unless}}
+            {{/each}}
+            </ul>
+
+        </div>
+        <div class="col-md-6">
+            <h4>Burgers I've eaten</h4>
+            <ul class="list-group">
+                {{#each burgers}}
+                    {{#if this.devoured}}
+                <li class="list-group-item list-group-item-success" id="eaten">
+                    {{this.burger_name}}
+                </li>
+                {{/if}}
+            {{/each}}
+            </ul>
+        </div>
+</div>
+
+<div id="bottom">
+    <hr />
+    <h2>Add A Burger Option</h2>
+
+    <div class="row">
+      <div class="col s12" id="col">
+        <form action="/burgers" method="POST" >
+          <input type="text" id="txtArea" name="burger_name" placeholder="What's the next burger on bucket list?">
+          <button type="submit" class="btn btn-primary" id="col">Add The Burger</button>
+        </form>
+      </div>
+    </div>
+</div>
+
+</div>
